@@ -1,12 +1,6 @@
 // C = (F -32) / 1.8
 // F = (C * 1.8) + 32
-// 32F = 0
-const convertBtn = document.getElementById('convertBtn');
-const clearBtn = document.getElementById('clearBtn');
-const cBtn = document.getElementById('cBtn');
-const fBtn = document.getElementById('fBtn');
-const tempOutput = document.getElementById('tempOutput');
-const tempInput = document.getElementById('tempInput');
+// 32F = 0C
 
 const init = () => {//init
     eventListeners();
@@ -18,12 +12,20 @@ const printToDom = (divId, textToPrint) => {//This is a standard print function
 };
 
 const eventListeners = () => {//event listeners
+    const convertBtn = document.getElementById('convertBtn');
+    const clearBtn = document.getElementById('clearBtn');
     convertBtn.addEventListener('click', determineConverter);
     clearBtn.addEventListener('click', clear);
 };
 
 
 const determineConverter = () => {//This decides if you clicked C or F and runs accordingly
+    const cBtn = document.getElementById('cBtn');
+    const fBtn = document.getElementById('fBtn');
+    const tempInput = document.getElementById('tempInput');
+
+
+
     if(cBtn.checked === true){
         toC(tempInput.value);
     } else if(fBtn.checked === true){
@@ -49,11 +51,18 @@ const toC = (temp) => {// C = (F -32) / 1.8     //F to C converter
 const toF = (temp) => {// F = (C * 1.8) + 32    //C to F converter
     const a = parseFloat(temp * 1.8) + 32;
     const roundedA = Math.round(a);
-    domStringBuilder(roundedA, "F");
+    domStringBuilder(roundedA, 'F', true);
 };
-
+//
 const domStringBuilder = (finalTemp, unit) => {//This builds the string to type back to you
-    const domString = `<h2>${finalTemp} degrees ${unit}</h2>`;
+    let tempColor = 'green';
+    if(finalTemp>=90 && unit==='F' || finalTemp>=32 && unit==='C'){
+    tempColor = 'red';
+    }
+    else if(finalTemp <= 32 && unit==='F' || finalTemp<=0 && unit==='C'){
+    tempColor = 'blue';
+    }; 
+    const domString=`<h2 class="${tempColor}">${finalTemp} degrees ${unit}</h2>`;
     printToDom('tempOutput', domString);
 };
 
