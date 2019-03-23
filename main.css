@@ -1,6 +1,16 @@
 body{
     background-color: black;
     color: antiquewhite;
+    text-align: center;
+    display:flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+.converterBox{
+    border: 2px solid aliceblue;
+    width: 25%;
+    padding: 5%;
+    align-self: center;
 }
 .red{
     color: red;

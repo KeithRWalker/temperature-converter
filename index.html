@@ -9,17 +9,21 @@
     </head> 
     <body>
         <h1>Temperature Converter</h1>
-        <p>This is a Temperature Converter</p>
-
-        Temp: <input type="number" id="tempInput" placeholder="temperature">
-        <br>
-        F° to C° <input type="radio" value="c" name="temp" id="cBtn">
-        <br>
-        C° to F° <input type="radio" value="f" name="temp" id="fBtn">
-        <br>
-        <button id="convertBtn">Convert</button>
-        <button id="clearBtn">Clear</button>
-        <div id="tempOutput"></div>
+        <p>This is a Temperature Converter
+            <br>
+            Enter your temperature below, select a conversion method, and click convert
+        </p>
+        <div class="converterBox">
+            <input type="number" id="tempInput" placeholder="Enter Temperature Here">
+            <br>
+            F° to C° <input type="radio" value="c" name="temp" id="cBtn">
+            <br>
+            C° to F° <input type="radio" value="f" name="temp" id="fBtn">
+            <br>
+            <button id="convertBtn">Convert</button>
+            <button id="clearBtn">Clear</button>
+            <div id="tempOutput"></div>
+        </div>
 
         <script src="./main.js"></script>
     </body>
